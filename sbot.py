@@ -18,7 +18,7 @@ def mlbToFg(mlbam):
 
 if __name__ == '__main__':
     warnings.filterwarnings('ignore')
-    
+
     while True:
         year = input("Enter a year from 2015 to present: ")
         try:
@@ -38,7 +38,6 @@ if __name__ == '__main__':
         # get player id data and read into a pandas dataframe
         url = "https://raw.githubusercontent.com/chadwickbureau/register/master/data/people.csv"
         lookup = pd.read_csv(url, index_col="key_mlbam")
-        lookup['name'] = lookup['name_first'] + ' ' + lookup['name_last']
         pbar.update(10)
 
         # locate savant data and read into pandas dataframe
