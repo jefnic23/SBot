@@ -6,7 +6,7 @@ Python script that builds yearly SBot leaderboards.
 
 - Python 3.X
 - Yearly Statcast data (which you can get using [this script](https://github.com/jefnic23/baseball_savant_scraper))
-  - If you already have Statcast data you will need to make sure it's saved with the format *../baseball_savant/data/savant_{year}*, otherwise you'll have to edit the code at line 45 of *sbot.py*
+  - If you already have Statcast data you will need to make sure it's saved with the format `../baseball_savant/data/savant_{year}`, otherwise you'll have to edit the code at line 45 of `sbot.py`
 
 ## Installation
 
@@ -18,7 +18,7 @@ git clone https://github.com/jefnic23/sbot.git
 
 ## Setup
 
-Open a console inside the *sbot* directory and create a virtual enviroment. 
+Open a console inside the `sbot` directory and create a virtual enviroment. 
 
 ```bash
 python.exe -m venv venv
@@ -44,6 +44,6 @@ Once everything is setup and dependencies are installed, run the script from the
 python sbot.py
 ```
 
-Files are saved to the *data* directory.
+Files are saved to the `data` directory.
 
 Since the script relies on Statcast data, only MLB seasons after 2015 are valid. The script will ask which year you'd like to generate a leaderboard for, so if you want all Statcast seasons you'll have to run the script for each season.
