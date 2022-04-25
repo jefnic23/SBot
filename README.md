@@ -13,12 +13,12 @@ Python script that builds yearly SBot leaderboards.
 Download the repo using **Code > Download ZIP**, or clone the repo using git bash.
 
 ```bash
-git clone https://github.com/jefnic23/sbot.git
+git clone https://github.com/jefnic23/SBot.git
 ```
 
 ## Setup
 
-Open a console inside the `sbot` directory and create a virtual enviroment. 
+Open a console inside the `SBot` directory and create a virtual enviroment. 
 
 ```bash
 python.exe -m venv venv
@@ -47,3 +47,8 @@ python sbot.py
 Files are saved to the `data` directory.
 
 Since the script relies on Statcast data, only MLB seasons after 2015 are valid. The script will ask which year you'd like to generate a leaderboard for, so if you want all Statcast seasons you'll have to run the script for each season.
+
+#### Related
+
+- [hEV](https://github.com/jefnic23/hEV)
+- [wCSW](https://github.com/jefnic23/wCSW)
