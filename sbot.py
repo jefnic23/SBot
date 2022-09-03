@@ -9,6 +9,7 @@ from tqdm import tqdm
 
 
 def db_engine():
+    '''create database connection'''
     load_dotenv()
     USER = os.getenv('USER')
     PSWD = os.getenv('PSWD')
@@ -19,9 +20,7 @@ def db_engine():
 
 
 def mlbToFg(mlbam):
-    '''
-    converts mlb ids to fangraphs ids
-    '''
+    '''converts mlb ids to fangraphs ids'''
     try:
         return lookup.loc[mlbam]['key_fangraphs']
     except:
@@ -38,7 +37,7 @@ if __name__ == '__main__':
     if not os.path.exists('data'):
         os.mkdir('data')
 
-    # get player id data and read into a pandas dataframe
+    # get player id data
     url            = "https://raw.githubusercontent.com/chadwickbureau/register/master/data/people.csv"
     lookup         = pd.read_csv(url, index_col="key_mlbam")
     lookup['name'] = lookup['name_first'] + ' ' + lookup['name_last']
@@ -54,14 +53,14 @@ if __name__ == '__main__':
         'bb_type'
     ]
 
-    # get savant data from postgres and read into pandas dataframe
+    # get savant data from postgres
     engine = db_engine()
     df     = pd.read_sql('baseball_savant', engine, columns=columns)
     pbar.update(1)
 
     with pd.ExcelWriter('data/SBot_leaderboards.xlsx') as writer:
         for year in tqdm(range(df['game_year'].min(), df['game_year'].max()+1), position=1, desc="Leaderboards"):
-        # drop all rows where there isn't a stolen base opportunity (runner on first, second base empty), then group by runner
+            # drop all rows where there isn't a stolen base opportunity (runner on first, second base empty), then group by runner
             sv = df[(~df['on_1b'].isna()) & (df['on_2b'].isna())]
             sv = sv.groupby(['on_1b', 'game_pk', 'at_bat_number']).size().groupby(level=0).size().reset_index().rename(columns={0: 'Opportunities'})
 
